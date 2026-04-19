@@ -1,7 +1,11 @@
+# netlify.toml
 [build]
-  base    = "Dashboard/admin-dashboard"
-  command = "npm run build"
-  publish = ".next"
+  base = ""            # optional: set if your site is in a subfolder, e.g. "frontend"
+  publish = "dist"     # change to your build output folder, e.g. "build" or "dist"
+  command = "npm run build"  # change to your actual build command
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+# optional example redirects
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
