@@ -61,7 +61,7 @@ function MockupCard({ screen }: { screen: Screen; flip?: boolean }) {
   const { icon: Icon, color, tag, bars, mockupBg, accentBg } = screen;
   return (
     <div
-      className={`relative rounded-3xl p-6 aspect-[9/16] max-h-72 flex flex-col justify-between overflow-hidden bg-gradient-to-b ${mockupBg} border border-white/8`}
+      className={`relative rounded-3xl p-6 aspect-9/16 max-h-72 flex flex-col justify-between overflow-hidden bg-linear-to-b ${mockupBg} border border-white/8`}
       style={{ boxShadow: `0 0 40px ${color}20, 0 20px 40px rgba(0,0,0,0.4)` }}
     >
       {/* Status bar sim */}
@@ -94,7 +94,7 @@ export function ShowcaseSection() {
   return (
     <section id="product" className="relative py-28 px-6 bg-[#0D0D0F] overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/8 to-transparent" />
       </div>
 
       <div className="max-w-6xl mx-auto">
@@ -133,7 +133,7 @@ export function ShowcaseSection() {
                 transition={{ duration: 0.7, ease: 'easeOut' }}
               >
                 {/* Mockup */}
-                <div className="w-full md:w-auto md:flex-shrink-0 flex justify-center gap-4">
+                <div className="w-full md:w-auto md:shrink-0 flex justify-center gap-4">
                   <MockupCard screen={screen} />
                   {i === 0 && (
                     <div className="hidden sm:block mt-8 opacity-50 scale-90 origin-top">

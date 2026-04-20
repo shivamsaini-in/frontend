@@ -155,7 +155,7 @@ export function UserTable({
                     {/* Actions */}
                     <TableCell className="text-right pr-4">
                       <div className="flex items-center justify-end gap-0.5">
-                        <Link href={`/users/${user._id}`}>
+                        <Link href={`/dashboard/users/${user._id}`}>
                           <Button
                             variant="ghost"
                             size="icon"
