@@ -18,12 +18,16 @@ export const useAuthStore = create<AuthState>()(
       isAuthenticated: false,
 
       setAuth: (token, user) => {
-        document.cookie = `auth-token=${token}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`;
+        if (typeof document !== 'undefined') {
+          document.cookie = `auth-token=${token}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`;
+        }
         set({ token, user, isAuthenticated: true });
       },
 
       clearAuth: () => {
-        document.cookie = 'auth-token=; path=/; max-age=0';
+        if (typeof document !== 'undefined') {
+          document.cookie = 'auth-token=; path=/; max-age=0';
+        }
         set({ token: null, user: null, isAuthenticated: false });
       },
     }),

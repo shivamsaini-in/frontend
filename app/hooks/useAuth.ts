@@ -15,7 +15,7 @@ export const useLogin = () => {
     onSuccess: ({ token, user }) => {
       setAuth(token, user);
       toast.success(`Welcome back, ${user.name}!`);
-      router.push('/');
+      router.push('/dashboard');
     },
     onError: (error: unknown) => {
       const axiosError = error as { response?: { data?: { message?: string } }; message?: string };
@@ -33,7 +33,7 @@ export const useLogout = () => {
     mutationFn: logoutUser,
     onSettled: () => {
       clearAuth();
-      router.push('/login');
+      router.push('/');
     },
   });
 };
