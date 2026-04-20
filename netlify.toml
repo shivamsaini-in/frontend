@@ -1,5 +1,4 @@
 [build]
-  base    = "Dashboard/admin-dashboard"
   command = "npm run build"
   publish = ".next"
 
