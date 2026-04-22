@@ -5,136 +5,146 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background:              var(--background);
-  --color-foreground:              var(--foreground);
-  --font-sans:                     var(--font-sans);
-  --font-heading:                  var(--font-heading);
-  --font-mono:                     var(--font-geist-mono);
-  --color-sidebar-ring:            var(--sidebar-ring);
-  --color-sidebar-border:          var(--sidebar-border);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent:          var(--sidebar-accent);
+  --color-sidebar-accent: var(--sidebar-accent);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary:         var(--sidebar-primary);
-  --color-sidebar-foreground:      var(--sidebar-foreground);
-  --color-sidebar:                 var(--sidebar);
-  --color-chart-5:                 var(--chart-5);
-  --color-chart-4:                 var(--chart-4);
-  --color-chart-3:                 var(--chart-3);
-  --color-chart-2:                 var(--chart-2);
-  --color-chart-1:                 var(--chart-1);
-  --color-ring:                    var(--ring);
-  --color-input:                   var(--input);
-  --color-border:                  var(--border);
-  --color-destructive:             var(--destructive);
-  --color-accent-foreground:       var(--accent-foreground);
-  --color-accent:                  var(--accent);
-  --color-muted-foreground:        var(--muted-foreground);
-  --color-muted:                   var(--muted);
-  --color-secondary-foreground:    var(--secondary-foreground);
-  --color-secondary:               var(--secondary);
-  --color-primary-foreground:      var(--primary-foreground);
-  --color-primary:                 var(--primary);
-  --color-popover-foreground:      var(--popover-foreground);
-  --color-popover:                 var(--popover);
-  --color-card-foreground:         var(--card-foreground);
-  --color-card:                    var(--card);
-  --color-success:                 var(--success);
-  --color-success-foreground:      var(--success-foreground);
-  --color-ember-amber:             var(--ember-amber);
-  --radius-sm:  calc(var(--radius) * 0.6);
-  --radius-md:  calc(var(--radius) * 0.8);
-  --radius-lg:  var(--radius);
-  --radius-xl:  calc(var(--radius) * 1.4);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-ember-amber: var(--ember-amber);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* ─── Dark (Ember — primary theme) ──────────────────────────────────────────── */
+/* ─── Dark / Ember theme (theme.config.json → themeModes.dark + brand) ───── */
 :root,
 .dark {
-  --background:            #0D0D0F;
-  --foreground:            #F5F5F7;
-  --card:                  #141416;
-  --card-foreground:       #F5F5F7;
-  --popover:               #1A1A1E;
-  --popover-foreground:    #F5F5F7;
-  --primary:               #FF4D1C;
-  --primary-foreground:    #FFFFFF;
-  --secondary:             #1E1E22;
-  --secondary-foreground:  #A0A0AB;
-  --muted:                 #1A1A1E;
-  --muted-foreground:      #6B6B78;
-  --accent:                #FFAD0D;
-  --accent-foreground:     #0D0D0F;
-  --success:               #39D98A;
-  --success-foreground:    #0D0D0F;
-  --ember-amber:           #FFAD0D;
-  --destructive:           #FF3B3B;
-  --border:                rgba(255,255,255,0.08);
-  --input:                 rgba(255,255,255,0.07);
-  --ring:                  rgba(255,77,28,0.5);
-  --chart-1:               #FF4D1C;
-  --chart-2:               #FFAD0D;
-  --chart-3:               #39D98A;
-  --chart-4:               #3B9EFF;
-  --chart-5:               #BF5AF2;
-  --radius:                0.75rem;
-  --sidebar:               #111113;
-  --sidebar-foreground:    #C8C8D0;
-  --sidebar-primary:       #FF4D1C;
+  /* theme.config.json → themeModes.dark */
+  --background:           #0D0D0F;
+  --foreground:           #F5F5F7;
+  --card:                 #141416;
+  --card-foreground:      #F5F5F7;
+  --popover:              #1A1A1E;
+  --popover-foreground:   #F5F5F7;
+  --secondary:            #1A1A1E;
+  --secondary-foreground: #A0A0AB;
+  --muted:                #1A1A1E;
+  --muted-foreground:     #6B6B78;
+  --border:               rgba(255,255,255,0.08);
+  --input:                rgba(255,255,255,0.07);
+  --ring:                 rgba(255,77,28,0.5);
+
+  /* theme.config.json → brand */
+  --primary:              #FF4D1C;
+  --primary-foreground:   #FFFFFF;
+  --accent:               #FFAD0D;
+  --accent-foreground:    #0D0D0F;
+  --success:              #39D98A;
+  --success-foreground:   #0D0D0F;
+  --ember-amber:          #FFAD0D;
+  --destructive:          #FF3B3B;
+
+  /* theme.config.json → brand (charts) */
+  --chart-1:              #FF4D1C;
+  --chart-2:              #FFAD0D;
+  --chart-3:              #39D98A;
+  --chart-4:              #3B9EFF;
+  --chart-5:              #BF5AF2;
+
+  --radius: 0.75rem;
+
+  --sidebar:                    #111113;
+  --sidebar-foreground:         #A0A0AB;
+  --sidebar-primary:            #FF4D1C;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent:        rgba(255,77,28,0.1);
-  --sidebar-accent-foreground: #F5F5F7;
-  --sidebar-border:        rgba(255,255,255,0.06);
-  --sidebar-ring:          rgba(255,77,28,0.4);
+  --sidebar-accent:             rgba(255,77,28,0.1);
+  --sidebar-accent-foreground:  #F5F5F7;
+  --sidebar-border:             rgba(255,255,255,0.06);
+  --sidebar-ring:               rgba(255,77,28,0.4);
 }
 
-/* ─── Light mode ─────────────────────────────────────────────────────────────── */
+/* ─── Light mode (theme.config.json → themeModes.light + brand) ──────────── */
 .light {
-  --background:            #F8F8FA;
-  --foreground:            #111113;
-  --card:                  #FFFFFF;
-  --card-foreground:       #111113;
-  --popover:               #FFFFFF;
-  --popover-foreground:    #111113;
-  --primary:               #FF4D1C;
-  --primary-foreground:    #FFFFFF;
-  --secondary:             #F0F0F5;
-  --secondary-foreground:  #4A4A55;
-  --muted:                 #F0F0F5;
-  --muted-foreground:      #7A7A88;
-  --accent:                #FFAD0D;
-  --accent-foreground:     #111113;
-  --success:               #2CC070;
-  --success-foreground:    #FFFFFF;
-  --ember-amber:           #FFAD0D;
-  --destructive:           #E53E3E;
-  --border:                rgba(0,0,0,0.08);
-  --input:                 rgba(0,0,0,0.06);
-  --ring:                  rgba(255,77,28,0.4);
-  --chart-1:               #FF4D1C;
-  --chart-2:               #FFAD0D;
-  --chart-3:               #2CC070;
-  --chart-4:               #2176FF;
-  --chart-5:               #9B59B6;
-  --sidebar:               #FFFFFF;
-  --sidebar-foreground:    #4A4A55;
-  --sidebar-primary:       #FF4D1C;
+  /* theme.config.json → themeModes.light */
+  --background:           #F8F8FA;
+  --foreground:           #111113;
+  --card:                 #FFFFFF;
+  --card-foreground:      #111113;
+  --popover:              #FFFFFF;
+  --popover-foreground:   #111113;
+  --secondary:            #F0F0F5;
+  --secondary-foreground: #4A4A55;
+  --muted:                #F0F0F5;
+  --muted-foreground:     #7A7A88;
+  --border:               rgba(0,0,0,0.08);
+  --input:                rgba(0,0,0,0.06);
+  --ring:                 rgba(255,77,28,0.4);
+
+  /* theme.config.json → brand */
+  --primary:              #FF4D1C;
+  --primary-foreground:   #FFFFFF;
+  --accent:               #FFAD0D;
+  --accent-foreground:    #111113;
+  --success:              #39D98A;
+  --success-foreground:   #FFFFFF;
+  --ember-amber:          #FFAD0D;
+  --destructive:          #FF3B3B;
+
+  /* theme.config.json → brand (charts) */
+  --chart-1:              #FF4D1C;
+  --chart-2:              #FFAD0D;
+  --chart-3:              #39D98A;
+  --chart-4:              #3B9EFF;
+  --chart-5:              #BF5AF2;
+
+  --sidebar:                    #FFFFFF;
+  --sidebar-foreground:         #4A4A55;
+  --sidebar-primary:            #FF4D1C;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent:        rgba(255,77,28,0.08);
-  --sidebar-accent-foreground: #111113;
-  --sidebar-border:        rgba(0,0,0,0.07);
-  --sidebar-ring:          rgba(255,77,28,0.3);
+  --sidebar-accent:             rgba(255,77,28,0.08);
+  --sidebar-accent-foreground:  #111113;
+  --sidebar-border:             rgba(0,0,0,0.07);
+  --sidebar-ring:               rgba(255,77,28,0.3);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    transition-property: background-color, border-color, color;
-    transition-duration: 200ms;
-    transition-timing-function: ease;
   }
   body {
     @apply bg-background text-foreground;
@@ -150,7 +160,7 @@
   }
 }
 
-/* ─── Utilities ──────────────────────────────────────────────────────────────── */
+/* ─── Utilities ──────────────────────────────────────────────────────────── */
 @layer utilities {
 
   /* Glass morphism */
@@ -176,7 +186,7 @@
     border: 1px solid rgba(0,0,0,0.08);
   }
 
-  /* Ember glows */
+  /* Ember glows — theme.config.json → brand.primary / brand.accent / brand.success */
   .glow-primary {
     box-shadow: 0 0 24px rgba(255,77,28,0.25), 0 0 8px rgba(255,77,28,0.15);
   }
@@ -187,7 +197,7 @@
     box-shadow: 0 0 20px rgba(57,217,138,0.2);
   }
 
-  /* Premium card shadow */
+  /* Premium card shadow — theme.config.json → shadows */
   .shadow-card {
     box-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.2);
   }
@@ -207,7 +217,7 @@
     border-radius: 99px;
   }
 
-  /* Ember gradient text */
+  /* Ember gradient text — theme.config.json → gradients.primary */
   .text-ember {
     background: linear-gradient(135deg, #FF4D1C 0%, #FFAD0D 100%);
     -webkit-background-clip: text;
@@ -220,7 +230,7 @@
     border-image: linear-gradient(135deg, #FF4D1C, #FFAD0D) 1;
   }
 
-  /* Smooth fade-in */
+  /* Smooth fade-in — theme.config.json → animations.durationFast */
   .animate-fade-in {
     animation: fade-in 0.3s ease forwards;
   }

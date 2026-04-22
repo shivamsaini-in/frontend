@@ -1,73 +1,24 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Flame, Target, Dumbbell, Timer, TrendingUp, Bell, BarChart2, Shield } from 'lucide-react';
+import { featurePalette } from '@/config/theme-config/tokens';
 
-const FEATURES = [
-  {
-    icon: Flame,
-    title: 'Habit Tracking',
-    description: 'Build powerful streaks that last. Visual heatmaps show exactly where you excel and where to push harder.',
-    color: '#FF4D1C',
-    bg: 'rgba(255,77,28,0.08)',
-    border: 'rgba(255,77,28,0.2)',
-  },
-  {
-    icon: Target,
-    title: 'Task Manager',
-    description: 'Prioritize ruthlessly. Smart scheduling ensures your most important work gets done first, every single day.',
-    color: '#FFAD0D',
-    bg: 'rgba(255,173,13,0.08)',
-    border: 'rgba(255,173,13,0.2)',
-  },
-  {
-    icon: Dumbbell,
-    title: 'Fitness Tracker',
-    description: 'Log workouts, track reps, monitor progress. Every PR celebrated, every session logged automatically.',
-    color: '#39D98A',
-    bg: 'rgba(57,217,138,0.08)',
-    border: 'rgba(57,217,138,0.2)',
-  },
-  {
-    icon: Timer,
-    title: 'Focus Timer',
-    description: 'Pomodoro-powered deep work sessions. Block distractions, measure focus time, and build unstoppable momentum.',
-    color: '#3B9EFF',
-    bg: 'rgba(59,158,255,0.08)',
-    border: 'rgba(59,158,255,0.2)',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Progress Analytics',
-    description: 'Beautiful charts show your growth over weeks and months. Data-driven insights to optimize every routine.',
-    color: '#BF5AF2',
-    bg: 'rgba(191,90,242,0.08)',
-    border: 'rgba(191,90,242,0.2)',
-  },
-  {
-    icon: Bell,
-    title: 'Smart Reminders',
-    description: 'Context-aware nudges that know when to push and when to back off. Never miss a habit again.',
-    color: '#FF4D1C',
-    bg: 'rgba(255,77,28,0.08)',
-    border: 'rgba(255,77,28,0.2)',
-  },
-  {
-    icon: BarChart2,
-    title: 'Screen Time Insights',
-    description: 'Know exactly where your time goes. App usage reports help you reclaim hours lost to distractions.',
-    color: '#FFAD0D',
-    bg: 'rgba(255,173,13,0.08)',
-    border: 'rgba(255,173,13,0.2)',
-  },
-  {
-    icon: Shield,
-    title: 'Privacy First',
-    description: 'Your data stays yours. End-to-end encryption, no ads, no tracking. We make money when you succeed.',
-    color: '#39D98A',
-    bg: 'rgba(57,217,138,0.08)',
-    border: 'rgba(57,217,138,0.2)',
-  },
+const FEATURE_DEFS = [
+  { icon: Flame,    title: 'Habit Tracking',      description: 'Build powerful streaks that last. Visual heatmaps show exactly where you excel and where to push harder.' },
+  { icon: Target,   title: 'Task Manager',         description: 'Prioritize ruthlessly. Smart scheduling ensures your most important work gets done first, every single day.' },
+  { icon: Dumbbell, title: 'Fitness Tracker',      description: 'Log workouts, track reps, monitor progress. Every PR celebrated, every session logged automatically.' },
+  { icon: Timer,    title: 'Focus Timer',          description: 'Pomodoro-powered deep work sessions. Block distractions, measure focus time, and build unstoppable momentum.' },
+  { icon: TrendingUp, title: 'Progress Analytics', description: 'Beautiful charts show your growth over weeks and months. Data-driven insights to optimize every routine.' },
+  { icon: Bell,     title: 'Smart Reminders',      description: 'Context-aware nudges that know when to push and when to back off. Never miss a habit again.' },
+  { icon: BarChart2, title: 'Screen Time Insights', description: 'Know exactly where your time goes. App usage reports help you reclaim hours lost to distractions.' },
+  { icon: Shield,   title: 'Privacy First',        description: 'Your data stays yours. End-to-end encryption, no ads, no tracking. We make money when you succeed.' },
 ];
+
+/* Merge feature definitions with palette tokens from theme.config.json */
+const FEATURES = FEATURE_DEFS.map((f, i) => ({
+  ...f,
+  ...featurePalette[i % featurePalette.length],
+}));
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -76,14 +27,12 @@ const fadeUp = {
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="relative py-28 px-6 bg-[#0D0D0F]">
-      {/* Background accent */}
+    <section id="features" className="relative py-28 px-6 bg-background">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-150 h-px bg-linear-to-r from-transparent via-primary/40 to-transparent" />
       </div>
 
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 24 }}
@@ -103,7 +52,6 @@ export function FeaturesSection() {
           </p>
         </motion.div>
 
-        {/* Grid */}
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
           initial="hidden"
@@ -128,7 +76,6 @@ export function FeaturesSection() {
               <h3 className="font-heading text-sm font-bold text-white mb-2">{title}</h3>
               <p className="text-xs text-white/45 leading-relaxed">{description}</p>
 
-              {/* Hover glow */}
               <div
                 className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                 style={{ boxShadow: `inset 0 0 30px ${color}10` }}

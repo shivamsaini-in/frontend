@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import NProgress from 'nprogress';
+import { brand } from '@/config/theme-config/tokens';
 
 NProgress.configure({ showSpinner: false, speed: 300, minimum: 0.08 });
 
@@ -22,15 +23,16 @@ export function TopLoadingBar() {
     return () => clearTimeout(timer);
   }, [pathname]);
 
+  /* Colors from theme.config.json → brand.primary / brand.accent */
   return (
     <style>{`
       #nprogress .bar {
-        background: linear-gradient(90deg, #FF4D1C, #FFAD0D);
+        background: linear-gradient(90deg, ${brand.primary}, ${brand.accent});
         height: 2.5px;
-        box-shadow: 0 0 8px #FF4D1C, 0 0 4px #FFAD0D;
+        box-shadow: 0 0 8px ${brand.primary}, 0 0 4px ${brand.accent};
       }
       #nprogress .peg {
-        box-shadow: 0 0 10px #FF4D1C, 0 0 5px #FF4D1C;
+        box-shadow: 0 0 10px ${brand.primary}, 0 0 5px ${brand.primary};
       }
     `}</style>
   );

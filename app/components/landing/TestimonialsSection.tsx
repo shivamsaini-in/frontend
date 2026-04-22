@@ -56,7 +56,7 @@ export function TestimonialsSection() {
   return (
     <section id="testimonials" className="relative py-28 px-6 bg-[#0D0D0F] overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/8 to-transparent" />
       </div>
 
       <div className="max-w-6xl mx-auto">

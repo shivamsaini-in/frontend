@@ -2,6 +2,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { Zap, ArrowRight, Play } from 'lucide-react';
+import { canvasColors, hexAlpha } from '@/config/theme-config/tokens';
 
 interface Star {
   x: number; y: number; z: number;
@@ -15,6 +16,9 @@ interface Particle {
   vx: number; vy: number;
   size: number; opacity: number; color: string;
 }
+
+/* All canvas colors sourced from theme.config.json → brand via canvasColors */
+const PARTICLE_COLORS = [canvasColors.nebulaEmber, canvasColors.nebulaAmber];
 
 export function SpaceHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -44,7 +48,7 @@ export function SpaceHero() {
       vy: (Math.random() - 0.5) * 0.3,
       size: Math.random() * 2 + 0.5,
       opacity: Math.random() * 0.4 + 0.1,
-      color: Math.random() > 0.5 ? '#FF4D1C' : '#FFAD0D',
+      color: PARTICLE_COLORS[Math.random() > 0.5 ? 0 : 1],
     }));
   }, []);
 
@@ -62,23 +66,19 @@ export function SpaceHero() {
       h = canvas.height = window.innerHeight;
       initStars(w, h);
     };
-
     const onMouseMove = (e: MouseEvent) => {
       target.current = { x: (e.clientX / w - 0.5) * 2, y: (e.clientY / h - 0.5) * 2 };
     };
-
     window.addEventListener('resize', onResize);
     window.addEventListener('mousemove', onMouseMove);
 
     const draw = () => {
       t += 0.016;
-      // Smooth mouse lerp
       mouse.current.x += (target.current.x - mouse.current.x) * 0.04;
       mouse.current.y += (target.current.y - mouse.current.y) * 0.04;
-
       ctx.clearRect(0, 0, w, h);
 
-      // Deep space gradient
+      /* Deep space gradient */
       const bg = ctx.createRadialGradient(w * 0.5, h * 0.4, 0, w * 0.5, h * 0.4, h);
       bg.addColorStop(0,   'rgba(22,10,30,1)');
       bg.addColorStop(0.4, 'rgba(13,13,18,1)');
@@ -86,43 +86,40 @@ export function SpaceHero() {
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, w, h);
 
-      // Nebula glow 1 — ember
+      /* Nebula 1 — brand.primary */
       const neb1 = ctx.createRadialGradient(w * 0.25, h * 0.3, 0, w * 0.25, h * 0.3, w * 0.35);
-      neb1.addColorStop(0,   'rgba(255,77,28,0.07)');
-      neb1.addColorStop(0.5, 'rgba(255,77,28,0.03)');
-      neb1.addColorStop(1,   'rgba(255,77,28,0)');
+      neb1.addColorStop(0,   hexAlpha(canvasColors.nebulaEmber, 0.07));
+      neb1.addColorStop(0.5, hexAlpha(canvasColors.nebulaEmber, 0.03));
+      neb1.addColorStop(1,   hexAlpha(canvasColors.nebulaEmber, 0));
       ctx.fillStyle = neb1;
       ctx.fillRect(0, 0, w, h);
 
-      // Nebula glow 2 — amber
+      /* Nebula 2 — brand.accent */
       const neb2 = ctx.createRadialGradient(w * 0.75, h * 0.6, 0, w * 0.75, h * 0.6, w * 0.4);
-      neb2.addColorStop(0,   'rgba(255,173,13,0.06)');
-      neb2.addColorStop(0.6, 'rgba(255,173,13,0.02)');
-      neb2.addColorStop(1,   'rgba(255,173,13,0)');
+      neb2.addColorStop(0,   hexAlpha(canvasColors.nebulaAmber, 0.06));
+      neb2.addColorStop(0.6, hexAlpha(canvasColors.nebulaAmber, 0.02));
+      neb2.addColorStop(1,   hexAlpha(canvasColors.nebulaAmber, 0));
       ctx.fillStyle = neb2;
       ctx.fillRect(0, 0, w, h);
 
-      // Nebula glow 3 — deep purple
+      /* Nebula 3 — brand.purple */
       const neb3 = ctx.createRadialGradient(w * 0.5, h * 0.15, 0, w * 0.5, h * 0.15, w * 0.3);
-      neb3.addColorStop(0,   'rgba(120,60,200,0.05)');
-      neb3.addColorStop(1,   'rgba(120,60,200,0)');
+      neb3.addColorStop(0,   hexAlpha(canvasColors.nebulaPurple, 0.05));
+      neb3.addColorStop(1,   hexAlpha(canvasColors.nebulaPurple, 0));
       ctx.fillStyle = neb3;
       ctx.fillRect(0, 0, w, h);
 
-      // Stars with parallax
+      /* Stars */
       starsRef.current.forEach((star) => {
         const parallax = star.z * 18;
         const sx = star.baseX + mouse.current.x * parallax;
         const sy = star.baseY + mouse.current.y * parallax;
         const twinkle = 0.5 + 0.5 * Math.sin(t * star.twinkleSpeed * 60 + star.twinkleOffset);
         const alpha = star.opacity * (0.6 + 0.4 * twinkle);
-
         ctx.beginPath();
         ctx.arc(sx, sy, star.size * (0.8 + 0.2 * twinkle), 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255,255,255,${alpha})`;
         ctx.fill();
-
-        // Glow on bright stars
         if (star.opacity > 0.8 && star.size > 1.2) {
           const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, star.size * 4);
           g.addColorStop(0, `rgba(255,255,255,${alpha * 0.4})`);
@@ -134,12 +131,12 @@ export function SpaceHero() {
         }
       });
 
-      // Planet 1 — large ember planet (parallax layer 1)
+      /* Planet 1 — brand.primary */
       const p1x = w * 0.85 + mouse.current.x * -25;
       const p1y = h * 0.18 + mouse.current.y * -25;
       const p1r = Math.min(w, h) * 0.11;
       const planet1 = ctx.createRadialGradient(p1x - p1r * 0.3, p1y - p1r * 0.3, 0, p1x, p1y, p1r);
-      planet1.addColorStop(0,    'rgba(255,100,50,0.35)');
+      planet1.addColorStop(0,    hexAlpha(canvasColors.planet1, 0.35));
       planet1.addColorStop(0.5,  'rgba(180,60,20,0.25)');
       planet1.addColorStop(0.85, 'rgba(80,20,10,0.2)');
       planet1.addColorStop(1,    'rgba(0,0,0,0)');
@@ -147,39 +144,38 @@ export function SpaceHero() {
       ctx.arc(p1x, p1y, p1r, 0, Math.PI * 2);
       ctx.fillStyle = planet1;
       ctx.fill();
-      // Planet ring
       ctx.beginPath();
       ctx.ellipse(p1x, p1y, p1r * 1.6, p1r * 0.35, -0.3, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(255,120,50,0.12)';
+      ctx.strokeStyle = hexAlpha(canvasColors.planet1, 0.12);
       ctx.lineWidth = 6;
       ctx.stroke();
 
-      // Planet 2 — amber small (parallax layer 2)
+      /* Planet 2 — brand.accent */
       const p2x = w * 0.08 + mouse.current.x * -12;
       const p2y = h * 0.75 + mouse.current.y * -12;
       const p2r = Math.min(w, h) * 0.055;
       const planet2 = ctx.createRadialGradient(p2x - p2r * 0.3, p2y - p2r * 0.3, 0, p2x, p2y, p2r);
-      planet2.addColorStop(0,    'rgba(255,200,80,0.3)');
-      planet2.addColorStop(0.6,  'rgba(200,130,20,0.2)');
-      planet2.addColorStop(1,    'rgba(0,0,0,0)');
+      planet2.addColorStop(0,   hexAlpha(canvasColors.planet2, 0.30));
+      planet2.addColorStop(0.6, 'rgba(200,130,20,0.2)');
+      planet2.addColorStop(1,   'rgba(0,0,0,0)');
       ctx.beginPath();
       ctx.arc(p2x, p2y, p2r, 0, Math.PI * 2);
       ctx.fillStyle = planet2;
       ctx.fill();
 
-      // Planet 3 — tiny distant blue
+      /* Planet 3 — brand.info */
       const p3x = w * 0.6 + mouse.current.x * -8;
       const p3y = h * 0.08 + mouse.current.y * -8;
       const p3r = Math.min(w, h) * 0.025;
       const planet3 = ctx.createRadialGradient(p3x, p3y, 0, p3x, p3y, p3r);
-      planet3.addColorStop(0,   'rgba(100,180,255,0.25)');
+      planet3.addColorStop(0,   hexAlpha(canvasColors.planet3, 0.25));
       planet3.addColorStop(1,   'rgba(0,0,0,0)');
       ctx.beginPath();
       ctx.arc(p3x, p3y, p3r, 0, Math.PI * 2);
       ctx.fillStyle = planet3;
       ctx.fill();
 
-      // Floating ember particles
+      /* Floating particles */
       particlesRef.current.forEach((p) => {
         p.x += p.vx + mouse.current.x * 0.15;
         p.y += p.vy + mouse.current.y * 0.15;
@@ -193,7 +189,7 @@ export function SpaceHero() {
         ctx.fill();
       });
 
-      // Scan line overlay
+      /* Scan lines */
       for (let i = 0; i < h; i += 4) {
         ctx.fillStyle = 'rgba(0,0,0,0.03)';
         ctx.fillRect(0, i, w, 1);
@@ -203,7 +199,6 @@ export function SpaceHero() {
     };
 
     rafRef.current = requestAnimationFrame(draw);
-
     return () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener('resize', onResize);
@@ -215,33 +210,27 @@ export function SpaceHero() {
     <section className="relative w-full h-screen overflow-hidden flex items-center justify-center">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
-      {/* Vignette */}
       <div className="absolute inset-0 bg-radial-[ellipse_at_center] from-transparent via-transparent to-black/60 pointer-events-none" />
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0D0D0F] to-transparent pointer-events-none" />
+      {/* Bottom fade into bg-background */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-background to-transparent pointer-events-none" />
 
-      {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        {/* Badge */}
         <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 mb-8 backdrop-blur-sm">
           <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
           <span className="text-xs font-medium text-primary/90 tracking-wide">Now in Public Beta</span>
         </div>
 
-        {/* Headline */}
         <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] tracking-tight mb-6">
           Build the life{' '}
           <br className="hidden sm:block" />
           <span className="text-ember">you deserve.</span>
         </h1>
 
-        {/* Subheading */}
         <p className="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-10">
           Discipline combines habit tracking, task management, fitness, and deep focus into one beautifully designed app — powered by science.
         </p>
 
-        {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/login"
@@ -259,7 +248,6 @@ export function SpaceHero() {
           </a>
         </div>
 
-        {/* Social proof */}
         <div className="mt-12 flex items-center justify-center gap-6 text-white/30 text-xs">
           <span>⭐ 4.9 App Store</span>
           <span className="h-3 w-px bg-white/20" />
@@ -269,10 +257,9 @@ export function SpaceHero() {
         </div>
       </div>
 
-      {/* Scroll hint */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/25">
         <span className="text-[10px] tracking-widest uppercase">Scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-white/20 to-transparent" />
+        <div className="w-px h-8 bg-linear-to-b from-white/20 to-transparent" />
       </div>
     </section>
   );

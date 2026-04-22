@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "appName": "Discipline App",
+    "themeName": "Ember",
+    "themeId": "ember-v1",
+    "version": "1.0.0",
+    "defaultMode": "dark",
+    "platforms": ["web-dashboard", "ios", "android"],
+    "updatedAt": "2026-04-22T00:00:00Z"
+  },
+
+  "brand": {
+    "primary": "#FF4D1C",
+    "accent": "#FFAD0D",
+    "success": "#39D98A",
+    "danger": "#FF3B3B",
+    "info": "#3B9EFF",
+    "purple": "#BF5AF2",
+    "tagline": "Control your time. Control your life."
+  },
+
+  "fonts": {
+    "heading": {
+      "web": "Outfit",
+      "mobile": "SF Pro Display",
+      "fallback": "Inter"
+    },
+    "body": {
+      "web": "Inter",
+      "mobile": "SF Pro Text",
+      "fallback": "Inter"
+    },
+    "mono": {
+      "web": "Geist Mono",
+      "mobile": "Menlo"
+    }
+  },
+
+  "typography": {
+    "hero":    { "size": 40, "weight": 800 },
+    "h1":      { "size": 32, "weight": 700 },
+    "h2":      { "size": 28, "weight": 700 },
+    "h3":      { "size": 22, "weight": 600 },
+    "title":   { "size": 18, "weight": 600 },
+    "body":    { "size": 16, "weight": 400 },
+    "small":   { "size": 14, "weight": 400 },
+    "caption": { "size": 12, "weight": 400 }
+  },
+
+  "spacing": {
+    "xs":  4,
+    "sm":  8,
+    "md":  12,
+    "lg":  16,
+    "xl":  20,
+    "2xl": 24,
+    "3xl": 32
+  },
+
+  "radius": {
+    "sm":   8,
+    "md":   12,
+    "lg":   16,
+    "xl":   20,
+    "2xl":  28,
+    "pill": 999
+  },
+
+  "themeModes": {
+    "dark": {
+      "background":    "#0D0D0F",
+      "surface":       "#141416",
+      "card":          "#141416",
+      "cardSecondary": "#1A1A1E",
+      "textPrimary":   "#F5F5F7",
+      "textSecondary": "#A0A0AB",
+      "textMuted":     "#6B6B78",
+      "border":        "rgba(255,255,255,0.08)",
+      "input":         "rgba(255,255,255,0.07)",
+      "ring":          "rgba(255,77,28,0.5)"
+    },
+    "light": {
+      "background":    "#F8F8FA",
+      "surface":       "#FFFFFF",
+      "card":          "#FFFFFF",
+      "cardSecondary": "#F0F0F5",
+      "textPrimary":   "#111113",
+      "textSecondary": "#4A4A55",
+      "textMuted":     "#7A7A88",
+      "border":        "rgba(0,0,0,0.08)",
+      "input":         "rgba(0,0,0,0.06)",
+      "ring":          "rgba(255,77,28,0.4)"
+    }
+  },
+
+  "shadows": {
+    "sm": "0 1px 3px rgba(0,0,0,0.08)",
+    "md": "0 8px 24px rgba(0,0,0,0.12)",
+    "lg": "0 12px 32px rgba(0,0,0,0.18)"
+  },
+
+  "gradients": {
+    "primary": ["#FF4D1C", "#FFAD0D"],
+    "success": ["#39D98A", "#2CC070"],
+    "danger":  ["#FF3B3B", "#E53E3E"]
+  },
+
+  "web": {
+    "sidebar": {
+      "width":          280,
+      "collapsedWidth": 80,
+      "floating":       false
+    },
+    "header": {
+      "height": 64
+    },
+    "cards": {
+      "glassmorphism": true,
+      "hoverScale":    true
+    }
+  },
+
+  "mobile": {
+    "safeArea": true,
+    "bottomTabBar": {
+      "height":   72,
+      "floating": true,
+      "blur":     true
+    },
+    "homeHero": {
+      "scoreRing": true,
+      "animated":  true
+    }
+  },
+
+  "components": {
+    "button": {
+      "height": 52,
+      "radius": "xl",
+      "variants": {
+        "primary":   { "bg": "brand.primary", "text": "#FFFFFF" },
+        "secondary": { "bg": "theme.surface", "text": "theme.textPrimary" },
+        "danger":    { "bg": "brand.danger",  "text": "#FFFFFF" }
+      }
+    },
+    "card": {
+      "radius":  "xl",
+      "padding": 16,
+      "shadow":  "md"
+    },
+    "input": {
+      "height":   52,
+      "radius":   "lg",
+      "paddingX": 16
+    },
+    "chart": {
+      "line1": "#FF4D1C",
+      "line2": "#39D98A",
+      "line3": "#3B9EFF"
+    },
+    "progressRing": {
+      "thickness": 10,
+      "track":     "rgba(255,255,255,0.08)",
+      "progress":  "#FF4D1C"
+    }
+  },
+
+  "screens": {
+    "home": {
+      "showScore":      true,
+      "showStreak":     true,
+      "showTopApps":    true,
+      "showMotivation": true
+    },
+    "limits": {
+      "showDailyLimit":  true,
+      "showPerAppLimit": true,
+      "showPresets":     true
+    },
+    "progress": {
+      "showWeeklyChart":  true,
+      "showAchievements": true
+    },
+    "settings": {
+      "showNotifications": true,
+      "showPrivacy":       true,
+      "showLogout":        true
+    }
+  },
+
+  "features": {
+    "darkMode":       true,
+    "lightMode":      true,
+    "analytics":      true,
+    "notifications":  true,
+    "biometricLogin": true,
+    "premiumThemes":  false
+  },
+
+  "animations": {
+    "enabled":        true,
+    "durationFast":   150,
+    "durationNormal": 250,
+    "durationSlow":   400
+  }
+}

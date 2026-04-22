@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { useLogin } from '@/app/hooks/useAuth';
 import { Zap, Flame, Target, Timer, Dumbbell } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { loginDots } from '@/config/theme-config/tokens';
 
 const loginSchema = z.object({
   email: z.string().min(1, 'Email is required'),
@@ -32,11 +33,8 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col md:flex-row bg-background">
 
       {/* ── Left panel — brand visual ── */}
-      <div className={cn(
-        'relative hidden md:flex md:w-1/2 flex-col justify-between overflow-hidden',
-        'bg-[#0A0A0C]',
-      )}>
-        {/* Ember gradient orbs */}
+      <div className="relative hidden md:flex md:w-1/2 flex-col justify-between overflow-hidden bg-sidebar">
+        {/* Ember gradient orbs — uses CSS vars from theme */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -top-20 -left-20 h-96 w-96 rounded-full bg-primary/20 blur-[80px]" />
           <div className="absolute bottom-10 right-0 h-80 w-80 rounded-full bg-accent/15 blur-[70px]" />
@@ -98,11 +96,11 @@ export default function LoginPage() {
           ))}
         </div>
 
-        {/* Bottom bar */}
+        {/* Bottom bar — brand dot colors from theme.config.json → loginDots */}
         <div className="relative z-10 px-10 py-4 border-t border-white/6 flex items-center justify-between">
           <p className="text-[11px] text-white/25">© 2025 Discipline</p>
           <div className="flex gap-1">
-            {['#FF4D1C', '#FFAD0D', '#39D98A'].map((c) => (
+            {loginDots.map((c) => (
               <span key={c} className="h-1.5 w-5 rounded-full" style={{ backgroundColor: c }} />
             ))}
           </div>
@@ -121,15 +119,11 @@ export default function LoginPage() {
         </div>
 
         <div className="w-full max-w-sm">
-          {/* Heading */}
           <div className="mb-8">
             <h2 className="font-heading text-2xl font-bold tracking-tight">Welcome back</h2>
-            <p className="text-sm text-muted-foreground mt-1.5">
-              Sign in to your admin account
-            </p>
+            <p className="text-sm text-muted-foreground mt-1.5">Sign in to your admin account</p>
           </div>
 
-          {/* Form */}
           <form onSubmit={handleSubmit((data) => login.mutate(data))} className="space-y-5">
             <div className="space-y-1.5">
               <Label htmlFor="email" className="text-xs font-medium text-muted-foreground">

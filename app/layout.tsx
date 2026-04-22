@@ -3,13 +3,17 @@ import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
 
-const inter = Outfit({
+/**
+ * Fonts sourced from theme.config.json → fonts.heading.web / fonts.body.web
+ * To change fonts: update theme.config.json and swap the import + constructor below.
+ */
+const headingFont = Outfit({           /* fonts.heading.web = "Outfit" */
   variable: '--font-heading',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
 });
 
-const interBody = Inter({
+const bodyFont = Inter({               /* fonts.body.web = "Inter" */
   variable: '--font-sans',
   subsets: ['latin'],
   weight: ['400', '500', '600'],
@@ -25,7 +29,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${interBody.variable} h-full antialiased dark`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${headingFont.variable} ${bodyFont.variable} h-full antialiased dark`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full ios-scroll bg-background text-foreground">
         <Providers>{children}</Providers>
       </body>
