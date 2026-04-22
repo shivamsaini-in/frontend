@@ -20,8 +20,8 @@ const bodyFont = Inter({               /* fonts.body.web = "Inter" */
 });
 
 export const metadata: Metadata = {
-  title: 'Discipline Admin',
-  description: 'Admin panel for Discipline — habit tracker, fitness, focus timer',
+  title: 'WinDaily Admin',
+  description: 'Admin panel for WinDaily — screen time control, habit building, and daily focus tracking',
   icons: { icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" },
 };
 

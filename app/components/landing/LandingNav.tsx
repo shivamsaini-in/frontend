@@ -35,7 +35,7 @@ export function LandingNav() {
             <div className="h-8 w-8 rounded-xl bg-primary/15 border border-primary/20 flex items-center justify-center glow-primary transition-transform group-hover:scale-105">
               <Zap className="h-4 w-4 text-primary" />
             </div>
-            <span className="font-heading text-base font-bold text-white tracking-tight">Discipline</span>
+            <span className="font-heading text-base font-bold text-white tracking-tight">WinDaily</span>
           </Link>
 
           {/* Desktop nav */}

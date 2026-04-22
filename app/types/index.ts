@@ -1,13 +1,33 @@
+// ─── Admin User (the logged-in admin) ────────────────────────────────────────
+
 export interface User {
   _id: string;
-  name: string;
+  name: string;       // mapped from fullName by backend toSafeObject
+  fullName: string;
   email: string;
-  role: 'SUPER_ADMIN' | 'USER';
-  isActive: boolean;
+  role: 'SUPER_ADMIN' | 'ADMIN';
+  status: 'ACTIVE' | 'INACTIVE' | 'SUSPENDED';
   lastLogin: string | null;
   createdAt: string;
   updatedAt: string;
 }
+
+// ─── Mobile User (managed by admin) ─────────────────────────────────────────
+
+export interface MobileUser {
+  _id: string;
+  fullName: string;
+  email: string;
+  plan: 'FREE' | 'PRO' | 'ELITE';
+  platform: 'ios' | 'android';
+  deviceType: 'ios' | 'android' | 'unknown';
+  status: 'ACTIVE' | 'INACTIVE' | 'SUSPENDED';
+  lastLogin: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// ─── API shapes ───────────────────────────────────────────────────────────────
 
 export interface ApiResponse<T> {
   success: boolean;
@@ -29,12 +49,16 @@ export interface PaginatedResponse<T> {
   };
 }
 
+// ─── Dashboard ───────────────────────────────────────────────────────────────
+
 export interface DashboardSummary {
   totalUsers: number;
   activeUsers: number;
-  inactiveUsers: number;
-  recentUsers: User[];
+  newLast7Days: number;
+  avgScoreToday: number;
 }
+
+// ─── Auth ────────────────────────────────────────────────────────────────────
 
 export interface LoginCredentials {
   email: string;
@@ -46,19 +70,12 @@ export interface AuthData {
   user: User;
 }
 
-export interface CreateUserPayload {
-  name: string;
-  email: string;
-  password: string;
-  role?: 'SUPER_ADMIN' | 'USER';
-}
+// ─── User management payloads ────────────────────────────────────────────────
 
-export interface UpdateUserPayload {
-  name?: string;
-  email?: string;
-  password?: string;
-  role?: 'USER';
-  isActive?: boolean;
+export type UserStatus = 'ACTIVE' | 'INACTIVE' | 'SUSPENDED';
+
+export interface UpdateUserStatusPayload {
+  status: UserStatus;
 }
 
 // ─── Mobile Analytics ─────────────────────────────────────────────────────────
@@ -72,7 +89,7 @@ export interface DeviceInfo {
 export interface AppUsageEntry {
   appName: string;
   packageName: string;
-  usageTime: number; // minutes
+  usageTime: number;
   lastUsedAt: string | null;
 }
 
@@ -82,7 +99,7 @@ export interface MobileAnalysisRecord {
   date: string;
   deviceInfo: DeviceInfo | null;
   appsUsage: AppUsageEntry[];
-  totalScreenTime: number; // minutes
+  totalScreenTime: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -95,7 +112,7 @@ export interface AnalyticsSummary {
 }
 
 export interface UserAnalyticsResponse {
-  user: User;
+  user: MobileUser;
   records: MobileAnalysisRecord[];
   pagination: PaginatedResponse<MobileAnalysisRecord>['pagination'];
 }

@@ -57,7 +57,7 @@ export default function LoginPage() {
               <Zap className="h-5 w-5 text-white" />
             </div>
             <div>
-              <p className="font-heading text-lg font-bold text-white tracking-tight">Discipline</p>
+              <p className="font-heading text-lg font-bold text-white tracking-tight">WinDaily</p>
               <p className="text-[11px] text-white/40">Admin Console</p>
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function LoginPage() {
 
         {/* Bottom bar — brand dot colors from theme.config.json → loginDots */}
         <div className="relative z-10 px-10 py-4 border-t border-white/6 flex items-center justify-between">
-          <p className="text-[11px] text-white/25">© 2025 Discipline</p>
+          <p className="text-[11px] text-white/25">© 2025 WinDaily</p>
           <div className="flex gap-1">
             {loginDots.map((c) => (
               <span key={c} className="h-1.5 w-5 rounded-full" style={{ backgroundColor: c }} />
@@ -115,7 +115,7 @@ export default function LoginPage() {
           <div className="h-9 w-9 rounded-xl bg-primary flex items-center justify-center glow-primary">
             <Zap className="h-4.5 w-4.5 text-white" />
           </div>
-          <p className="font-heading text-lg font-bold tracking-tight">Discipline Admin</p>
+          <p className="font-heading text-lg font-bold tracking-tight">WinDaily Admin</p>
         </div>
 
         <div className="w-full max-w-sm">
@@ -189,7 +189,7 @@ export default function LoginPage() {
           </form>
 
           <p className="text-center text-[11px] text-muted-foreground/50 mt-8">
-            Discipline Admin · Secure access only
+            WinDaily Admin · Secure access only
           </p>
         </div>
       </div>

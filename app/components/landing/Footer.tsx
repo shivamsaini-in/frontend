@@ -20,7 +20,7 @@ export function Footer() {
   return (
     <footer className="relative bg-[#0A0A0C] border-t border-white/6">
       {/* Top fade */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/25 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6 py-16">
         {/* Top row */}
@@ -31,10 +31,10 @@ export function Footer() {
               <div className="h-9 w-9 rounded-xl bg-primary/15 border border-primary/20 flex items-center justify-center glow-primary">
                 <Zap className="h-4 w-4 text-primary" />
               </div>
-              <span className="font-heading text-base font-bold text-white">Discipline</span>
+              <span className="font-heading text-base font-bold text-white">WinDaily</span>
             </Link>
             <p className="text-sm text-white/35 leading-relaxed max-w-xs">
-              The all-in-one app for building habits, crushing tasks, staying fit, and achieving deep focus.
+              Win your day, every day. Track screen time, build better habits, and grow your daily wins.
             </p>
 
             {/* Newsletter */}
@@ -72,7 +72,7 @@ export function Footer() {
 
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-white/6">
-          <p className="text-xs text-white/25">© 2025 Discipline. All rights reserved.</p>
+          <p className="text-xs text-white/25">© 2025 WinDaily. All rights reserved.</p>
 
           <div className="flex items-center gap-5">
             {SOCIALS.map(({ label, href }) => (

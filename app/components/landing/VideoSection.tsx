@@ -10,7 +10,7 @@ export function VideoSection() {
     <section id="video" className="relative py-28 px-6 bg-[#0D0D0F] overflow-hidden">
       {/* Glow bg */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-primary/6 blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-100 rounded-full bg-primary/6 blur-[100px]" />
       </div>
 
       <div className="max-w-5xl mx-auto">
@@ -25,11 +25,11 @@ export function VideoSection() {
             <span className="text-xs font-medium text-primary/80 tracking-wide">See it in action</span>
           </div>
           <h2 className="font-heading text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Watch Discipline<br />
+            Watch WinDaily<br />
             <span className="text-ember">change everything.</span>
           </h2>
           <p className="mt-4 text-white/50 max-w-lg mx-auto text-base leading-relaxed">
-            A 2-minute walkthrough of how Discipline turns scattered effort into focused, measurable progress.
+            A 2-minute walkthrough of how WinDaily turns scattered hours into daily wins and unstoppable momentum.
           </p>
         </motion.div>
 
@@ -44,7 +44,7 @@ export function VideoSection() {
         >
           {!playing ? (
             <div
-              className="relative w-full bg-gradient-to-br from-[#1a0a06] via-[#0d0d0f] to-[#0a0a12] cursor-pointer group"
+              className="relative w-full bg-linear-to-br from-[#1a0a06] via-[#0d0d0f] to-[#0a0a12] cursor-pointer group"
               style={{ paddingBottom: '56.25%' }}
               onClick={() => setPlaying(true)}
             >
@@ -71,7 +71,7 @@ export function VideoSection() {
                 </div>
 
                 {/* Bottom info bar */}
-                <div className="absolute bottom-0 left-0 right-0 px-8 py-5 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-between">
+                <div className="absolute bottom-0 left-0 right-0 px-8 py-5 bg-linear-to-t from-black/60 to-transparent flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="h-6 w-6 rounded-lg bg-primary/20 flex items-center justify-center">
                       <span className="text-primary text-xs">▲</span>

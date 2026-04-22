@@ -228,7 +228,7 @@ export function SpaceHero() {
         </h1>
 
         <p className="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-10">
-          Discipline combines habit tracking, task management, fitness, and deep focus into one beautifully designed app — powered by science.
+          WinDaily combines screen time control, habit building, and deep focus into one beautifully designed app — engineered for daily wins.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

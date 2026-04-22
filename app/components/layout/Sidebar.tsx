@@ -57,7 +57,7 @@ function SidebarContent({
         {(isMobile || !collapsed) && (
           <div className="flex-1 overflow-hidden">
             <p className="font-heading text-sm font-bold text-foreground truncate tracking-tight">
-              Discipline
+              WinDaily
             </p>
             <p className="text-[10px] text-muted-foreground">Admin Panel</p>
           </div>

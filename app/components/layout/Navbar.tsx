@@ -61,7 +61,7 @@ export function Navbar({ onMenuClick }: NavbarProps) {
             <div className="h-1.5 w-1.5 rounded-full bg-primary" />
           </div>
           <span className="text-sm font-medium text-muted-foreground hidden sm:block">
-            Discipline Admin
+            WinDaily Admin
           </span>
         </div>
       </div>

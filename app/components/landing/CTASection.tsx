@@ -30,7 +30,7 @@ export function CTASection() {
           </h2>
 
           <p className="text-white/50 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
-            Join 10,000+ people who chose discipline over distraction. Free forever — upgrade when you're ready.
+            Join 10,000+ people already winning their days. Free forever — upgrade when you're ready.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

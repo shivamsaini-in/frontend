@@ -1,6 +1,6 @@
 {
   "meta": {
-    "appName": "Discipline App",
+    "appName": "WinDaily",
     "themeName": "Ember",
     "themeId": "ember-v1",
     "version": "1.0.0",
@@ -16,7 +16,7 @@
     "danger": "#FF3B3B",
     "info": "#3B9EFF",
     "purple": "#BF5AF2",
-    "tagline": "Control your time. Control your life."
+    "tagline": "Win your day. Every day."
   },
 
   "fonts": {

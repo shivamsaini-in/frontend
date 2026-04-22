@@ -6,7 +6,7 @@ const TESTIMONIALS = [
     name: 'Sarah K.',
     role: 'Product Designer',
     avatar: 'SK',
-    text: 'Discipline completely replaced 4 different apps I was using. The habit streaks alone changed how I approach my mornings.',
+    text: 'WinDaily completely replaced 4 different apps I was using. The daily wins system alone changed how I approach every morning.',
     stars: 5,
     color: '#FF4D1C',
   },

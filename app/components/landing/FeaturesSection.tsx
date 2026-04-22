@@ -48,7 +48,7 @@ export function FeaturesSection() {
             <span className="text-ember">your entire life.</span>
           </h2>
           <p className="mt-4 text-white/50 max-w-xl mx-auto text-base leading-relaxed">
-            Stop juggling five different apps. Discipline brings every productivity tool into one elegant, powerful platform.
+            Stop juggling five different apps. WinDaily brings focus, habits, and daily wins into one elegant, powerful platform.
           </p>
         </motion.div>
 

@@ -7,12 +7,17 @@ import { useAuthStore } from '@/app/store/authStore';
 import type { LoginCredentials } from '@/app/types';
 
 export const useLogin = () => {
-  const { setAuth } = useAuthStore();
+  const { setAuth, clearAuth } = useAuthStore();
   const router = useRouter();
 
   return useMutation({
     mutationFn: (credentials: LoginCredentials) => loginUser(credentials),
     onSuccess: ({ token, user }) => {
+      if (user.role !== 'SUPER_ADMIN') {
+        clearAuth();
+        toast.error('Access denied. Super Admin only.');
+        return;
+      }
       setAuth(token, user);
       toast.success(`Welcome back, ${user.name}!`);
       router.push('/dashboard');
@@ -33,7 +38,7 @@ export const useLogout = () => {
     mutationFn: logoutUser,
     onSettled: () => {
       clearAuth();
-      router.push('/');
+      router.push('/login');
     },
   });
 };

@@ -1,12 +1,11 @@
+'use client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   getUsers,
-  createUser,
-  updateUser,
-  deleteUser,
+  updateUserStatus,
   type GetUsersParams,
 } from '@/app/services/userService';
-import type { CreateUserPayload, UpdateUserPayload } from '@/app/types';
+import type { UpdateUserStatusPayload } from '@/app/types';
 
 export const useUsers = (params: GetUsersParams) =>
   useQuery({
@@ -15,27 +14,11 @@ export const useUsers = (params: GetUsersParams) =>
     placeholderData: (prev) => prev,
   });
 
-export const useCreateUser = () => {
+export const useUpdateUserStatus = () => {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (payload: CreateUserPayload) => createUser(payload),
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['users'] }),
-  });
-};
-
-export const useUpdateUser = () => {
-  const qc = useQueryClient();
-  return useMutation({
-    mutationFn: ({ id, payload }: { id: string; payload: UpdateUserPayload }) =>
-      updateUser(id, payload),
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['users'] }),
-  });
-};
-
-export const useDeleteUser = () => {
-  const qc = useQueryClient();
-  return useMutation({
-    mutationFn: (id: string) => deleteUser(id),
+    mutationFn: ({ id, payload }: { id: string; payload: UpdateUserStatusPayload }) =>
+      updateUserStatus(id, payload),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['users'] }),
   });
 };
