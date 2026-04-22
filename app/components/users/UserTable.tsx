@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Pencil, ChevronLeft, ChevronRight, BarChart2, Users } from 'lucide-react';
+import { Pencil, ChevronLeft, ChevronRight, BarChart2, Users, Trash2 } from 'lucide-react';
 import type { MobileUser, PaginatedResponse, UserStatus } from '@/app/types';
 import { formatDate } from '@/app/utils/formatDate';
 import { cn } from '@/lib/utils';
@@ -36,6 +36,7 @@ interface UserTableProps {
   onPageChange: (page: number) => void;
   onEdit: (user: MobileUser) => void;
   onStatusChange: (id: string, status: UserStatus) => void;
+  onDelete: (id: string) => void;
 }
 
 export function UserTable({
@@ -45,6 +46,7 @@ export function UserTable({
   page,
   onPageChange,
   onEdit,
+  onDelete,
 }: UserTableProps) {
   return (
     <div className="space-y-4">
@@ -147,6 +149,9 @@ export function UserTable({
                         </Link>
                         <Button variant="ghost" size="icon" onClick={() => onEdit(user)} title="Change status" className="h-8 w-8 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5">
                           <Pencil className="h-3.5 w-3.5" />
+                        </Button>
+                        <Button variant="ghost" size="icon" onClick={() => onDelete(user._id)} title="Delete user" className="h-8 w-8 rounded-lg text-muted-foreground hover:text-rose-400 hover:bg-rose-500/10">
+                          <Trash2 className="h-3.5 w-3.5" />
                         </Button>
                       </div>
                     </TableCell>

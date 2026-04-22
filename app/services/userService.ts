@@ -24,3 +24,7 @@ export const updateUserStatus = async (id: string, payload: UpdateUserStatusPayl
   const { data } = await apiClient.patch<ApiResponse<MobileUser>>(`/admin/users/${id}/status`, payload);
   return data.data;
 };
+
+export const deleteUser = async (id: string): Promise<void> => {
+  await apiClient.delete(`/admin/users/${id}`);
+};
